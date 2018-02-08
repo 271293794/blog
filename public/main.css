@@ -1,0 +1,119 @@
+
+h1{
+color: rgb(58, 140, 179)
+}
+.chunk{
+    border: 1px solid rgb(240, 240, 240);
+}
+.margin-default{
+    margin: 20px;
+}
+.long-btn{
+    width: 100%;
+    background: #169BD5;
+    color: white;
+    
+    
+}
+body{
+    background-color: rgba(230, 240, 240, 0.123)
+}
+.padingTop30{
+    padding-top: 30px
+}
+.media-heading{
+    color: #169BD5
+}
+/* 更多评论、没有更多 */
+.comment-moreBtn,.comment-noMore {
+    display: block;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #f0f0f0;
+    color:#adadad;
+    font-size:14px
+}
+/* 更多评论 */
+.comment-moreBtn {
+    cursor: pointer
+}
+
+.comment-moreBtn:hover {
+    background-color: #e6e5e5;
+    color: #999
+}
+.box {
+    position: relative;
+    padding-left: 68px;
+    padding-bottom: 68px;
+}
+.common-avatar {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    width: 50px;
+    height: 50px;
+    font-size: 0;
+    border-radius: 50%;
+    background: url(//mat1.gtimg.com/v/comment/images/avatar_default.9d95c455.jpg) 0 0 no-repeat;
+    overflow: hidden;
+}
+.box-logout.box-content {
+    height: 84px;
+    padding-bottom: 10px;
+}
+
+.box-content {
+    border: 3px solid #f0f0f0;
+    position: relative;
+}
+.box-logout .box-textarea-block {
+    margin-right: 110px;
+    height: 72px;
+}
+
+
+.box-textarea-block {
+    margin-left: 12px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+.box-textarea {
+    height: 60%;
+    width: 100%;
+    display: block;
+    border: none;
+    font-size: 14px;
+    line-height: 24px;
+    color: #4b4b4b;
+    resize: none;
+}
+.box-loginBtn {
+    position: absolute;
+    right: -3px;
+    top: -3px;
+    z-index: 1;
+    width: 100px;
+    height: 82px;
+    background-color: #379be9;
+    font-size: 16px;
+    line-height: 100px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+}
+.log-content{
+padding-bottom: 50px;
+}
+.comment{
+    border-bottom: 1px solid #f0f0f0;
+}
+.comment-time {
+    color: #999;
+    display: inline-block;
+    margin-left: 12px;
+}

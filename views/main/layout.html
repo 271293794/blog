@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="public/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/main.css">
+    <script src="public/jquery-3.2.1.min.js"></script>
+    <script src="public/bootstrap/js/bootstrap.min.js"></script>
+    <script src="public/index.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+
+                <!-- <img src="public/banner.jpg" style="width:100%;height:100px" alt=""> -->
+                <ul class="nav nav-tabs">
+                    {% if !cid %}
+
+                    <li class="active">
+                        <a href="/">首页</a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="/">首页</a>
+                    </li>
+                    {% endif %} {% for item in cList %} {% if cid == item._id.toString() %}
+
+                    <li class="active">
+                        <a href="/?cid={{item._id.toString()}}">{{item.name}}</a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="/?cid={{item._id.toString()}}">{{item.name}}</a>
+                    </li>
+                    {% endif %} {% endfor %}
+
+                    <li class="dropdown pull-right">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">下拉
+                            <strong class="caret"></strong>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">操作</a>
+                            </li>
+                            <li>
+                                <a href="#">设置栏目</a>
+                            </li>
+                            <li>
+                                <a href="#">更多设置</a>
+                            </li>
+                            <li class="divider">
+                            </li>
+                            <li>
+                                <a href="#">分割线</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <div class="row padingTop30">
+                    <!-- 主页面 -->
+                    <div class="col-md-9 ">
+                        <!-- 母版中的占位符 -->
+                        {% block main %}{% endblock %}
+
+                    </div>
+                    <!-- 右侧登陆注册栏 -->
+                    <div class="col-md-3">
+
+                        {% if userInfo.id %}
+                        <div id="userInfo">
+                            <fieldset>
+                                <legend>用户信息</legend>
+                                <label name="username">{{userInfo.username}}</label>
+                                <p class="help-block">
+
+                                    {% if (userInfo.isAdmin) %}
+
+                                    <span id="colWarning">管理员你好！ </span>
+                                    <a href="/admin">进入管理页面</a>
+                                    {% else %}
+                                    <span id="colWarning">欢迎光临博客！</span>
+                                    {% endif %}
+
+                                </p>
+                                <button class="btn btn-default long-btn">退出</button>
+                            </fieldset>
+                        </div>
+                        {% else %}
+                        <div class="row" id="loginBox">
+                            <h3>登陆</h3>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">用户名</span>
+                                <input type="text" name="username" class="form-control" placeholder="username" aria-describedby="basic-addon1">
+                            </div>
+                            <br/>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">密码</span>
+                                <input type="text" name="password" class="form-control" placeholder="password" aria-describedby="basic-addon1">
+                            </div>
+                            <p class="help-block">
+                                <a href="#">马上注册.</a>
+                                <span id="colWarning" style="color:red"></span>
+                            </p>
+                            <button class="btn btn-default long-btn">登录</button>
+
+                        </div>
+                        <div class="row" id="registerBox" style="display:none">
+                            <h3>注册</h3>
+
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">用户名</span>
+                                <input type="text" name="username" class="form-control" placeholder="username" aria-describedby="basic-addon1">
+                            </div>
+                            <br/>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">密码</span>
+                                <input type="text" name="password" class="form-control" placeholder="password" aria-describedby="basic-addon1">
+                            </div>
+                            <p class="help-block">
+                                <a href="#">马上登录.</a>
+                                <span id="colWarning" style="color:red"></span>
+                            </p>
+                            <button class="btn btn-default long-btn">注册</button>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

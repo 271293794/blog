@@ -1,0 +1,58 @@
+<!-- 模版的继承语法 -->
+{% extends 'layout.html' %}
+<!-- 在此实现母版中的 main 部分 -->
+
+{% block main %}
+<div class="mainBox">
+    <input type="hidden" id="entityId" value="{{entity._id.toString()}}">
+    <h1 align="center">{{entity.title}} </h1>
+    <p class="text-primary" align="center">
+        作者：
+        <span class="info">{% if entity.user%} {{entity.user.username}} {%else %}无 {%endif %}</span>
+        时间：
+        <span class="info">{{entity.createTime.toLocaleDateString()}} </span>
+        阅读：
+        <span class="info">{{entity.views}} </span>
+        评论：
+        <span class="info">0 </span>
+
+    </p>
+
+    <div class="log-content">
+       {% autoescape %}  {{contentHTML}}  {% endautoescape %}
+    </div>
+    <div class="box" id="J_Post">
+        <div class="common-avatar"></div>
+        <div class="box-content box-logout">
+            <div class="box-textarea-block">
+                <textarea style="border:none;outline: none;" class="box-textarea" id="J_Textarea" placeholder="说两句吧..."></textarea> </div>
+
+            <span class="box-loginBtn J_PostBtn" id="btn_comment"> {%if userInfo%} 发布 {%else%}登录{%endif%} </span>
+        </div>
+    </div>
+    <div class="commenters">
+
+        {% for item in entity.comments %}
+        <div class="media comment">
+            <div class="media-left">
+                <a href="#">
+                    <img class="media-object" src="public/commenter.png" style="width:80px" alt="...">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading"> {{item.username}} &nbsp;
+                    <span class="comment-time" style="font-size:3px"> {{item.time.toLocaleDateString()}}</span>
+                </h4>
+
+                {{item.comment}}
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+    <div class="comment-moreBtn J_shortMore">查看更多评论</div>
+</div>
+
+
+{% endblock %}

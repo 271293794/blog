@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 模版的继承语法 -->
+{% extends 'layout.html' %}
+<!-- 在此实现母版中的 main 部分 -->
+
+{% block main %} {% for item in list %}
+
+<div class="panel panel-info">
+    <div class="panel-body">
+        <h4>
+            <a href="viewLog?lid={{item._id.toString()}} ">{{item.title}} </a>
+        </h4>
+        <p>{{item.message}} </p>
+    </div>
+    <div class="panel-footer">阅读：{{item.views}} &nbsp; &nbsp; 作者：{{item.user.username}} 评论:{{item.comments.length}}  &nbsp; 分类：{{item.type.name}}
+
+    </div>
+</div>
+{% endfor %}
+<nav aria-label="Page navigation" style="text-align:center">
+    <ul class="pager">
+        <li>
+            <a href="?cid={{cid}}&pageIndex={{pageUtil.pageIndex-1}} ">Previous</a>
+        </li>
+        <li>
+            <a href="?cid={{cid}}&pageIndex={{pageUtil.pageIndex+1}}">Next</a>
+        </li>
+    </ul>
+
+    <span style="float:right">当前第{{pageUtil.pageIndex}}页，每页{{pageUtil.pageSize}}条，共{{pageUtil.totalPage}}页{{pageUtil.totalCount}}条 </span>
+</nav>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,29 @@
+<!-- 模版的继承语法 -->
+{% extends 'layout.html' %}
+<!-- 在此实现母版中的 main 部分 -->
+
+{% block main %}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>分类名称</th>
+            <th>说明</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in list %}
+        <tr>
+            <th >{{item._id.toString()}} </th>
+            <td>{{item.name}}</td>
+            <td>{{item.message}} </td>
+            <td><a href="/admin/allCategory/alter?cid={{item._id.toString()}} ">修改</a>|<a href="/admin/allCategory/delete?cid={{item._id.toString()}}">删除</a> </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% include 'page.html' %}
+
+{% endblock %}

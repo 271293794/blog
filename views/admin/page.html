@@ -1,0 +1,12 @@
+<nav aria-label="Page navigation" style="text-align:center">
+    <ul class="pager">
+        <li>
+            <a href="?pageIndex={{pageUtil.pageIndex-1}} ">Previous</a>
+        </li>
+        <li>
+            <a href="?pageIndex={{pageUtil.pageIndex+1}}">Next</a>
+        </li>
+    </ul>
+
+    <span style="float:right">当前第{{pageUtil.pageIndex}}页，每页{{pageUtil.pageSize}}条，共{{pageUtil.totalPage}}页{{pageUtil.totalCount}}条 </span>
+</nav>

@@ -1,0 +1,39 @@
+<!-- 模版的继承语法 -->
+{% extends 'layout.html' %}
+<!-- 在此实现母版中的 main 部分 -->
+
+{% block main %}
+<h3>修改日志</h3>
+<form method="post" action="?lid={{entity._id.toString()}}">
+  <div class="form-group">
+    <label for="exampleInputEmail1">日志标题</label>
+    <input name="title" value="{{entity.title}}" class="form-control" placeholder="必填">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">日志简介</label>
+    <input name="message" value="{{entity.message}}" class="form-control" placeholder="选填">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">日志分类</label>
+    <br>
+    {% for item in cArr %}
+    <label class="radio-inline ">
+      {% if item._id==entity.type.toString() %}
+      <input type="radio"  name="cType" checked="checked"  value="{{item._id.toString()}}"> {{item.name}}
+      {% else %}
+      <input type="radio"  name="cType"  value="{{item._id.toString()}}"> {{item.name}}
+      {% endif %}
+      
+    </label>
+    {% endfor %}
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">日志内容</label>
+    <textarea name="content"  class="form-control" rows="3">{{entity.content}}</textarea>
+  </div>
+  <p class="help-block">{{effect}} </p>
+
+  <button type="submit" class="btn btn-default">提交</button>
+</form>
+
+{% endblock %}
