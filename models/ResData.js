@@ -1,8 +1,8 @@
 /**
  * 请求的返回数据类
- * @param {*返回代码} code 
- * @param {*消息} msg 
- * @param {*数据} data 
+ * @param {Number} code 返回代码
+ * @param {String} msg 消息
+ * @param {Object} data 数据
  */
 module.exports = function ResData(code = 0, msg = '', data = null) {
     this.code = code
